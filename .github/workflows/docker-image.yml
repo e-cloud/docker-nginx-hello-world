@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build . --tag ghostbee/docker-nginx-hello-world:$(date +%s)
+      run: docker build . --tag ghostbee/docker-nginx-hello-world:${{github.run_number}}
       
     - name: Docker Push
-      run: docker push ghostbee/docker-nginx-hello-world
+      run: docker push ghostbee/docker-nginx-hello-world:${{github.run_number}}
